@@ -1,4 +1,5 @@
 import { initializeApp } from 'firebase/app';
+import { createContext, useContext } from 'react';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_apiKey,
@@ -10,3 +11,11 @@ const firebaseConfig = {
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
+
+const FirebaseContext = createContext(null);
+
+export const useFirebase = () => useContext(FirebaseContext);
+
+export const FirebaseProvider = (children) => {
+  return <FirebaseContext.Provider>{children}</FirebaseContext.Provider>;
+};
