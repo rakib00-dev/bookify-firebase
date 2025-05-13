@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap';
 import { useFirebase } from '../context/Firebase';
 
 const LoginPage = () => {
-  const { loginUserWithEmailAndPass } = useFirebase();
+  const { loginUserWithEmailAndPass, loginWithGoogle } = useFirebase();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -47,6 +47,12 @@ const LoginPage = () => {
           Login
         </Button>
       </Form>
+
+      <h2 className="my-5">OR</h2>
+
+      <Button variant="danger" onClick={loginWithGoogle}>
+        Login with Google
+      </Button>
     </div>
   );
 };
