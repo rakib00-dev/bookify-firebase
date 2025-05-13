@@ -16,6 +16,10 @@ const FirebaseContext = createContext(null);
 
 export const useFirebase = () => useContext(FirebaseContext);
 
-export const FirebaseProvider = (children) => {
-  return <FirebaseContext.Provider>{children}</FirebaseContext.Provider>;
+export const FirebaseProvider = ({ children }) => {
+  return (
+    <FirebaseContext.Provider value={{ firebaseApp }}>
+      {children}
+    </FirebaseContext.Provider>
+  );
 };
