@@ -3,22 +3,23 @@ import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import { useFirebase } from '../context/Firebase';
 
-const RegisterPage = () => {
-  const { signupUserWithEmailAndPassword } = useFirebase();
+const LoginPage = () => {
+  const { loginUserWithEmailAndPass } = useFirebase();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('signing user...');
-    await signupUserWithEmailAndPassword(email, password);
-    console.log('Successfull');
+    console.log('loging in user...');
+    const result = await loginUserWithEmailAndPass(email, password);
+    console.log('login Successfull');
+    console.log(result);
   };
 
   return (
     <div className="container mt-5">
-      <h1 className="my-5">Register</h1>
+      <h1 className="my-5 auto">Login</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -29,9 +30,6 @@ const RegisterPage = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -46,11 +44,11 @@ const RegisterPage = () => {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Create Account
+          Login
         </Button>
       </Form>
     </div>
   );
 };
 
-export default RegisterPage;
+export default LoginPage;

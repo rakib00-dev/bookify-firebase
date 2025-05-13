@@ -1,6 +1,10 @@
 import { createContext, useContext } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_apiKey,
@@ -22,9 +26,12 @@ export const FirebaseProvider = ({ children }) => {
   const signupUserWithEmailAndPassword = (email, password) =>
     createUserWithEmailAndPassword(firebaseAuth, email, password);
 
+  const loginUserWithEmailAndPass = (email, password) =>
+    signInWithEmailAndPassword(firebaseAuth, email, password);
+
   return (
     <FirebaseContext.Provider
-      value={{ firebaseApp, signupUserWithEmailAndPassword }}
+      value={{ signupUserWithEmailAndPassword, loginUserWithEmailAndPass }}
     >
       {children}
     </FirebaseContext.Provider>
