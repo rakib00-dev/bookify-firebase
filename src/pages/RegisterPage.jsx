@@ -9,14 +9,16 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log('signing user...');
+    await signupUserWithEmailAndPassword(email, password);
+    console.log('Successfull');
+  };
+
   return (
     <div className="container mt-5">
-      <Form
-        onSubmit={(e) => {
-          e.preventDefault();
-          signupUserWithEmailAndPassword(email, password);
-        }}
-      >
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
