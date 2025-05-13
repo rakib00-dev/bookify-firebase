@@ -1,23 +1,18 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
+
+// Pages
+import RegisterPage from './pages/RegisterPage';
+
+// CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <h1 className="container">
-              home
-              <Button variant="info" className="">
-                click me
-              </Button>
-            </h1>
-          }
-        />
+        <Route path="/" element={<h1 className="container">home</h1>} />
         <Route path="/login" element={<h1>login</h1>} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>
   );
