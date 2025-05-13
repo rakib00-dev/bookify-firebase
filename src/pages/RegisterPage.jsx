@@ -11,7 +11,12 @@ const RegisterPage = () => {
 
   return (
     <div className="container mt-5">
-      <Form>
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault();
+          signupUserWithEmailAndPassword(email, password);
+        }}
+      >
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -19,6 +24,7 @@ const RegisterPage = () => {
             placeholder="Enter email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -31,18 +37,13 @@ const RegisterPage = () => {
             type="password"
             placeholder="Password"
             value={password}
+            minLength={6}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <Button
-          variant="primary"
-          type="submit"
-          onClick={() => signupUserWithEmailAndPassword(email, password)}
-        >
-          Submit
+        <Button variant="primary" type="submit">
+          Create Account
         </Button>
       </Form>
     </div>
