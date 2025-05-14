@@ -1,5 +1,8 @@
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
+// Components
+import MyNavbar from './components/MyNavbar';
+
 // Pages
 import RegisterPage from './pages/RegisterPage';
 
@@ -9,13 +12,16 @@ import LoginPage from './pages/LoginPage';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<h1>home</h1>} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <MyNavbar />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<h1>home</h1>} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
