@@ -7,7 +7,7 @@ const MyNavbar = () => {
   return (
     <Navbar bg="dark" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="#home">Bookify</Navbar.Brand>
+        <Navbar.Brand href="/">Bookify</Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/book/listing">Add Listing</Nav.Link>
